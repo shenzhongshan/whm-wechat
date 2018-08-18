@@ -8,7 +8,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "员工工天填报",
+    "navigationBarTitleText": "员工工天系统",
     "navigationBarTextStyle": "black"
   },
 "tabBar": {
@@ -21,6 +21,7 @@
         "pagePath": "pages/worksheet/worksheet",
         "text": "工作月报"
       }
-    ]
+    ],
+    "position":"top"
   }
 }

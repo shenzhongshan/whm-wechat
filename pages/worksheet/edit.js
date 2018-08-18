@@ -62,7 +62,6 @@ Page({
     })
   },
   saveBindHandler: function (e) {
-    debugger;
     var pdata = this.data;
     var month = parseInt(pdata.month.replace('-', ''));
     var sheet = {
@@ -77,8 +76,6 @@ Page({
     this.saveWorksheet(sheet);
   },
   saveWorksheet: function (sheet) {
-    console.log(sheet);
-    debugger;
     var me = this;
     wx.request({
       url: app.serviceUrl + '/wts/save/',

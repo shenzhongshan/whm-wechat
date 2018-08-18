@@ -5,22 +5,27 @@ const app = getApp()
 Page({
     data: {
       userInfo: {},
-      isLogon: true,
+      isLogon: false,
       hasUserInfo: false
     },
     onLoad: function() {
-      wx.hideTabBar({
-        animation: true 
-      });
+      if(!this.data.isLogon){
+        wx.hideTabBar({
+          animation: true
+        });
+      }
       app.isLogon = tkn => {
         this.setData({
-          isLogon: !tkn
+          isLogon: !!tkn
         });
-
+        if (this.data.isLogon) {
+          wx.showTabBar({
+            animation: true
+          })
+        }
       }
-
       this.setData({
-        isLogon: !app.token
+        isLogon: !!app.token
       });
 
       if (app.userInfo) {

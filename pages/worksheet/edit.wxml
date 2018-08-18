@@ -1,4 +1,4 @@
-    <form bindsubmit='saveBindHandler' bindreset='cancelBindHandler'>
+    <form bindsubmit='saveBindHandler'>
 <view class="page">
   <view class="page__bd">
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
@@ -91,7 +91,7 @@
       <button formType="submit" type="primary" plain="true">保存</button>
     </view>
     <view class='bottom-item'>
-      <button formType="reset" type="primary" plain="true">取消</button>
+      <button  type="primary" plain="true" bindtap="cancelBindHandler">取消</button>
     </view>
 
   </view>
