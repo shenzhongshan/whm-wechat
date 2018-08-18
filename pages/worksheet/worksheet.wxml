@@ -1,0 +1,75 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">请选择</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">月份</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{selectedMonth}}" fields="month" start="2018-01-01" end="2999-12-12" bindchange="datePickerBindchange">
+            <view class="weui-select weui-select_in-select-after" style="text-align:center;">{{selectedMonth}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">状态</view>
+        <view class="weui-cell__ft">{{status?'已提交':'未提交'}} </view>
+      </view>
+    </view>
+
+
+
+    <view wx:for="{{workSheet}}" class="weui-form-preview work-item">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__label">起止日期</view>
+        <view class="weui-form-preview__value_in-hd">{{item.startDate}}</view>
+        <view class="weui-form-preview__value_in-hd">{{item.endDate}}</view>
+      </view>
+      <view class="weui-form-preview__bd ">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">项目名称</view>
+          <view class="weui-form-preview__value">{{item.project.name}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">项目编号</view>
+          <view class="weui-form-preview__value">{{item.prjId}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">项目标准</view>
+          <view class="weui-form-preview__value">{{item.project.standard}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">项目规模</view>
+          <view class="weui-form-preview__value">{{item.project.scale}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">项目类型</view>
+          <view class="weui-form-preview__value">{{item.project.type}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">项目阶段</view>
+          <view class="weui-form-preview__value">{{item.prjPhase}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">本人任职</view>
+          <view class="weui-form-preview__value">{{item.prjPosition}}</view>
+        </view>
+      </view>
+      <view  wx:if="{{!status}}" class="weui-form-preview__ft">
+        <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" url="/pages/worksheet/edit?id={{item.id}}">编辑</navigator>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{!status}}" class="bottom-menu">
+  <view class='bottom-nav'>
+    <view class='bottom-item'>
+      <button type="primary" bindtap="addBindHandler" plain="true">新增</button>
+    </view>
+    <view class='bottom-item'>
+      <button type="primary" bindtap="submitBindHandler" plain="true">提交</button>
+    </view>
+  </view>
+</view>

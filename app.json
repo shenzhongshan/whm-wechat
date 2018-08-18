@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/bind/bind",
+    "pages/worksheet/worksheet",
+    "pages/worksheet/edit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "员工工天填报",
+    "navigationBarTextStyle": "black"
+  },
+"tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/worksheet/worksheet",
+        "text": "工作月报"
+      }
+    ]
+  }
+}

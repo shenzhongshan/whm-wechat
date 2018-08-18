@@ -1,0 +1,99 @@
+    <form bindsubmit='saveBindHandler' bindreset='cancelBindHandler'>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">月份</view>
+        <view class="weui-cell__ft">{{month}}</view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">请选择</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">项目名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindProjectChange" value="{{projectIndex}}" range="{{projects}}" range-key='name'>
+            <view class="weui-select">{{projects[projectIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__bd">项目编号</view>
+        <view class="weui-cell__ft">{{projects[projectIndex].prjId}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">项目标准</view>
+        <view class="weui-cell__ft">{{projects[projectIndex].standard}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">项目规模</view>
+        <view class="weui-cell__ft">{{projects[projectIndex].scale}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">项目类型</view>
+        <view class="weui-cell__ft">{{projects[projectIndex].type}}</view>
+      </view>
+    </view>
+    <view class="weui-cells__title">请选择</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">项目阶段</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindPrjPhaseChange" value="{{prjPhaseIndex}}" range="{{prjPhases}}">
+            <view class="weui-select">{{prjPhases[prjPhaseIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">本人任职</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindPrjPositionChange" value="{{prjPositionIndex}}" range="{{prjPositions}}">
+            <view class="weui-select weui-select_in-select-after">{{prjPositions[prjPositionIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">本月起始日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{startDate}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindStartDateChange">
+            <view class="weui-select weui-select_in-select-after" style="text-align:center;">{{startDate}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">本月结束日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{endDate}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindEndDateChange">
+            <view class="weui-select weui-select_in-select-after" style="text-align:center;">{{endDate}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottom-menu">
+  <view class='bottom-nav'>
+    <view class='bottom-item'>
+      <button formType="submit" type="primary" plain="true">保存</button>
+    </view>
+    <view class='bottom-item'>
+      <button formType="reset" type="primary" plain="true">取消</button>
+    </view>
+
+  </view>
+</view>
+    </form>
