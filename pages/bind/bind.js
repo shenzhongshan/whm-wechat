@@ -4,23 +4,25 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openid:'',
   },
   formSubmit: function (e) {
     var me = this;
-    console.log(e.detail.value);
+    debugger;
+    //console.log(e.detail.value);
     wx.request({
+      
       url: app.serviceUrl+"/wechat/bind",
       data: {
         username: e.detail.value.username,
         password: e.detail.value.password,
-        openid: app.openid
+        openid: me.data.openid
       },
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        console.log(res.data);
         if (res.statusCode == 200) {
           me.loginServer();
         }
@@ -28,18 +30,19 @@ Page({
     })
   },
   loginServer: function(){
+    var me = this;
     wx.request({
       url: app.serviceUrl + '/login',
       data: {
         username: 'wechat-user',
-        password: app.openid
+        password: me.data.openid
       },
       method: 'POST',
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.header)
+        //console.log(res.header)
         app.token = res.header['Authorization'];
       },
       complete: function (res) {
@@ -47,7 +50,7 @@ Page({
           wx.showToast({
             title: "登陆成功",
             icon: 'success',
-            duration: 20000,
+            duration: 2000,
             success: function () {
               setTimeout(function () {
                 wx.navigateTo({
@@ -59,5 +62,15 @@ Page({
         }
       }
     });
+  },
+  onLoad:function(){
+      this.setData({
+         openid:app.openid
+      });
+      app.setOpenid = oid => {
+        this.setData({
+          openid: app.openid
+        });
+      }
   }
 })

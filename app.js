@@ -19,6 +19,9 @@ App({
             var app = getApp();
             //console.log(res)
             app.openid = res.data['openId'];
+            if(app.setOpenid){
+              app.setOpenid(app.openid);
+            }
             loginServer();
           },
           complete: function (res) {

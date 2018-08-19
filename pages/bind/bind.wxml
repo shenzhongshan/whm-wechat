@@ -25,7 +25,7 @@
       </view>
     </view>
     <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" form-type='submit'>登录</button>
+      <button class="weui-btn" disabled="{{}}" type="primary" form-type='submit'>登录</button>
     </view>
    </form>
   </view>

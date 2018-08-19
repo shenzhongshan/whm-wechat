@@ -9,27 +9,27 @@ Page({
       hasUserInfo: false
     },
     onLoad: function() {
-      if(!this.data.isLogon){
-        wx.hideTabBar({
-          animation: true
-        });
-      }
+      var me = this;
       app.isLogon = tkn => {
-        this.setData({
+        me.setData({
           isLogon: !!tkn
         });
-        if (this.data.isLogon) {
+        if (me.data.isLogon) {
           wx.showTabBar({
+            animation: true
+          })
+        }else{
+          wx.hideTabBar({
             animation: true
           })
         }
       }
-      this.setData({
+      me.setData({
         isLogon: !!app.token
       });
 
       if (app.userInfo) {
-        this.setData({
+        me.setData({
           userInfo: app.userInfo,
           hasUserInfo: true
         })
@@ -37,7 +37,7 @@ Page({
         wx.getUserInfo({
           success: res => {
             app.userInfo = res.userInfo
-            this.setData({
+            me.setData({
               userInfo: res.userInfo,
               hasUserInfo: true
             })
@@ -50,6 +50,10 @@ Page({
         wx.showTabBar({
           animation: true
         })
+      }else{
+          wx.hideTabBar({
+            animation: true
+          });
       }
     }
 })
