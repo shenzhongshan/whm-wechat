@@ -8,7 +8,6 @@ Page({
   },
   formSubmit: function (e) {
     var me = this;
-    debugger;
     //console.log(e.detail.value);
     wx.request({
       
@@ -53,9 +52,14 @@ Page({
             duration: 2000,
             success: function () {
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '/pages/worksheet/worksheet'
-                })
+                wx.switchTab({
+                  url: '/pages/index/index',
+                  fail:function(){
+                    wx.redirectTo({
+                      url: '/pages/index/index'
+                    });
+                  }
+                });
               }, 2000)
             }
           })

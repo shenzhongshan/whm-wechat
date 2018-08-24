@@ -96,7 +96,8 @@ Page({
     this.setData({ 
       selectedMonth: app.currentMonth
       });
-   // console.log(this.data['selectedMonth']);
+  },
+  onShow: function () {
     this.requestWorkSheet();
   }
 })

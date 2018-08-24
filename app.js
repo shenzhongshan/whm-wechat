@@ -56,12 +56,18 @@ function loginServer() {
       app.token = res.header['Authorization'];
       if (app.isLogon) {
         app.isLogon(app.token);
+      } 
+      if (app.token) {
+        wx.redirectTo({
+          url: '/pages/index/index'
+        })
       }
+
     },
     complete: function (res) {
-      if (app.token) {
-        wx.navigateTo({
-          url: '/pages/index/index'
+      if (!app.token) {
+        wx.redirectTo({
+          url: '/pages/bind/bind'
         })
       }
     }

@@ -57,7 +57,7 @@ Page({
     })
   },
   cancelBindHandler: function (e) {
-    wx.navigateTo({
+    wx.switchTab({
       url: '/pages/worksheet/worksheet'
     })
   },
@@ -93,7 +93,7 @@ Page({
             icon: 'success',
             duration: 2000,
             success: function () {
-              wx.navigateTo({
+              wx.switchTab({
                 url: '/pages/worksheet/worksheet'
               })
             }
@@ -144,7 +144,6 @@ Page({
       dataType: 'json',
       responseType: '',
       success: function (res) {
-        debugger;
         if (res.statusCode==200){
           var rd = res.data;
           var idxph = me.data.prjPhases.indexOf(rd.prjPhase), 
